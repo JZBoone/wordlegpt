@@ -1,9 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": { "title": "wordlegpt API", "version": "1.0" },
-  "components": {
-    "schemas": {}
-  },
+  "components": {},
   "security": [],
   "servers": [{ "url": "https://wordlegpt.vercel.app" }],
   "paths": {
@@ -88,32 +86,30 @@
       }
     },
     "/api/guesses/match": {
-      "get": {
-        "summary": "Retrieve matching guesses based on the provided pattern and options.",
+      "post": {
+        "summary": "Retrieve matching guesses based on the provided regex pattern.",
         "operationId": "getMatchingGuesses",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "pattern",
-            "schema": { "type": "string" },
-            "required": true,
-            "description": "A 5-character pattern where letters represent fixed positions and asterisks (*) represent wildcards."
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "schema": { "type": "integer", "default": 25 },
-            "required": false,
-            "description": "The maximum number of matches to return."
-          },
-          {
-            "in": "query",
-            "name": "exclude",
-            "schema": { "type": "string" },
-            "required": false,
-            "description": "A list of letters that cannot be in the word"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pattern": {
+                    "type": "string",
+                    "description": "A regex pattern to match guesses. Letters should be lower case."
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "default": 25,
+                    "description": "The maximum number of matches to return."
+                  }
+                }
+              }
+            }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "A list of matching guesses.",
