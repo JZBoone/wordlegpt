@@ -7,7 +7,7 @@ import { loadAnswers } from "@/api-biz/answers";
  * /api/guesses/stats:
  *   get:
  *     description: Returns the number of guesses and potentially winning guesses
- *     operationId: getGuessesLength
+ *     operationId: getGuessesStats
  *     responses:
  *       200:
  *         description: A JSON object containing the length of guesses and potentially winning guesses

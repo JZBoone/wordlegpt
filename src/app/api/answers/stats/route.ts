@@ -7,7 +7,7 @@ import { loadAnswers } from "@/api-biz/answers";
  *   get:
  *     summary: Returns the number of past Wordle answers
  *     description: Gets past Wordle answers from the Rock Paper Shotgun website and returns the number of past answers.
- *     operationId: getAnswersLength
+ *     operationId: getAnswersStats
  *     responses:
  *       200:
  *         description: A JSON object containing the length of answers.
