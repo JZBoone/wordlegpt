@@ -100,6 +100,8 @@ export async function POST(req: Request) {
   }
   const { limit, pattern } = validationResult.options;
 
+  console.log(`Matching guesses with pattern: ${pattern}`);
+
   const answers = await loadAnswers();
 
   const matches = guesses.filter((guess) => {
