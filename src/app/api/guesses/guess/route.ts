@@ -27,9 +27,9 @@ function validateParams(options: Record<string, unknown>):
 
 /**
  * @swagger
- * /api/guesses/shoot:
+ * /api/guesses/guess:
  *   get:
- *     summary: Generates random guesses
+ *     summary: Returns some guesses
  *     description: Returns a list of random guesses that are valid answers but not in the answers list from the Rock Paper Shotgun website.
  *     operationId: getGuesses
  *     parameters:

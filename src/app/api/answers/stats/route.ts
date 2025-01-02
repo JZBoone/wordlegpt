@@ -3,7 +3,7 @@ import { loadAnswers } from "@/api-biz/answers";
 
 /**
  * @swagger
- * /api/answers:
+ * /api/answers/stats:
  *   get:
  *     summary: Returns the number of past Wordle answers
  *     description: Gets past Wordle answers from the Rock Paper Shotgun website and returns the number of past answers.

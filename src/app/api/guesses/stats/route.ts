@@ -4,7 +4,7 @@ import { loadAnswers } from "@/api-biz/answers";
 
 /**
  * @swagger
- * /api/guesses:
+ * /api/guesses/stats:
  *   get:
  *     description: Returns the number of guesses and potentially winning guesses
  *     operationId: getGuessesLength
