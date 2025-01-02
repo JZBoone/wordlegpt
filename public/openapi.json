@@ -9,7 +9,7 @@
       "get": {
         "summary": "Returns the number of past Wordle answers",
         "description": "Gets past Wordle answers from the Rock Paper Shotgun website and returns the number of past answers.",
-        "operationId": "getAnswersLength",
+        "operationId": "getAnswersStats",
         "responses": {
           "200": {
             "description": "A JSON object containing the length of answers.",
@@ -89,7 +89,7 @@
       "get": {
         "summary": "Returns some guesses",
         "description": "Returns a list of random guesses that are valid answers but not in the answers list from the Rock Paper Shotgun website.",
-        "operationId": "getGuesses",
+        "operationId": "guess",
         "parameters": [
           {
             "in": "query",
@@ -198,7 +198,7 @@
     "/api/guesses/stats": {
       "get": {
         "description": "Returns the number of guesses and potentially winning guesses",
-        "operationId": "getGuessesLength",
+        "operationId": "getGuessesStats",
         "responses": {
           "200": {
             "description": "A JSON object containing the length of guesses and potentially winning guesses",
