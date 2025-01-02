@@ -9,7 +9,7 @@ export const getApiDocs = async () => {
         title: "wordlegpt API",
         version: "1.0",
       },
-      components: {},
+      components: { schemas: {} },
       security: [],
       servers: [{ url: "https://wordlegpt.vercel.app" }],
     },
