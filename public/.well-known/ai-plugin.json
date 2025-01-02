@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "WordleGPT",
+  "name_for_model": "wordle_gpt",
+  "description_for_human": "WordleGPT is a snarky Wordle companion that offers hints, strategies, and valid guesses. It might tease you.",
+  "description_for_model": "Use these endpoints to suggest Wordle guesses or retrieve past Wordle answers",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://wordlegpt.vercel.app/openapi.json",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://wordlegpt.vercel.app/logo.png",
+  "contact_email": "jzachb@gmail.com",
+  "legal_info_url": "https://wordlegpt.vercel.app/legal"
+}
