@@ -9,6 +9,7 @@ import { guesses } from "@/lib/guesses";
  *   get:
  *     summary: Check if a word is a valid guess and if it was a past answer
  *     description: Checks from the list of valid wordle words and past answers from the Rock Paper Shotgun website if the word is a valid guess and if it was a past answer.
+ *     operationId: checkWord
  *     parameters:
  *       - in: query
  *         name: word

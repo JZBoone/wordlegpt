@@ -31,6 +31,7 @@ function validateParams(options: Record<string, unknown>):
  *   get:
  *     summary: Generates random guesses
  *     description: Returns a list of random guesses that are valid answers but not in the answers list from the Rock Paper Shotgun website.
+ *     operationId: getGuesses
  *     parameters:
  *       - in: query
  *         name: limit

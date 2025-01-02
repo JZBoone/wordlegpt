@@ -65,6 +65,7 @@ function validateParams(options: Record<string, unknown>):
  * /api/guesses/match:
  *   get:
  *     summary: Retrieve matching guesses based on the provided pattern and options.
+ *     operationId: getMatchingGuesses
  *     parameters:
  *       - in: query
  *         name: pattern
