@@ -23,17 +23,7 @@ function validateParams(options: Record<string, unknown>):
   }
   let regexPattern: RegExp;
   try {
-    let sanitizedPattern = pattern;
-    if (sanitizedPattern.startsWith("/")) {
-      sanitizedPattern = sanitizedPattern.slice(1);
-    }
-    if (sanitizedPattern.endsWith("i")) {
-      sanitizedPattern = sanitizedPattern.slice(0, -1);
-    }
-    if (sanitizedPattern.endsWith("/")) {
-      sanitizedPattern = sanitizedPattern.slice(0, -1);
-    }
-    regexPattern = new RegExp(sanitizedPattern, "i");
+    regexPattern = new RegExp(pattern, "i");
   } catch (e) {
     console.error(`Invalid regex pattern: ${pattern}`);
     console.error(e);
@@ -110,7 +100,9 @@ export async function POST(req: Request) {
   }
   const { limit, pattern } = validationResult.options;
 
-  console.log(`Matching guesses with pattern: ${pattern}`);
+  console.log(
+    `Matching guesses for pattern: ${validationResult.options.pattern}`
+  );
 
   const answers = await loadAnswers();
 
