@@ -23,7 +23,17 @@ function validateParams(options: Record<string, unknown>):
   }
   let regexPattern: RegExp;
   try {
-    regexPattern = new RegExp(pattern, "i");
+    let sanitizedPattern = pattern;
+    if (sanitizedPattern.startsWith("/")) {
+      sanitizedPattern = sanitizedPattern.slice(1);
+    }
+    if (sanitizedPattern.endsWith("i")) {
+      sanitizedPattern = sanitizedPattern.slice(0, -1);
+    }
+    if (sanitizedPattern.endsWith("/")) {
+      sanitizedPattern = sanitizedPattern.slice(0, -1);
+    }
+    regexPattern = new RegExp(sanitizedPattern, "i");
   } catch (e) {
     console.error(`Invalid regex pattern: ${pattern}`);
     console.error(e);
