@@ -136,8 +136,9 @@
     },
     "/api/guesses/match": {
       "post": {
-        "summary": "Retrieve matching guesses based on the provided regex pattern.",
-        "operationId": "getMatchingGuesses",
+        "summary": "Find guesses that match the user's constraints",
+        "operationId": "findMatches",
+        "description": "This endpoint returns a list of guesses that match the user's constraints. Previous Wordle answers are filtered out.",
         "requestBody": {
           "required": true,
           "content": {
@@ -145,14 +146,66 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "pattern": {
-                    "type": "string",
-                    "description": "A regex pattern to match guesses. Letters should be lower case."
-                  },
                   "limit": {
                     "type": "integer",
-                    "default": 25,
-                    "description": "The maximum number of matches to return."
+                    "description": "The maximum number of guesses to return. Defaults to 5.",
+                    "example": 5
+                  },
+                  "correctLetters": {
+                    "type": "array",
+                    "description": "List of letters that are in the correct position.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "letter": {
+                          "type": "string",
+                          "description": "A single alphabetic letter.",
+                          "example": "a"
+                        },
+                        "position": {
+                          "type": "integer",
+                          "description": "The zero-based position of the letter in the word (0-4).",
+                          "example": 0
+                        }
+                      }
+                    }
+                  },
+                  "eliminatedLetters": {
+                    "type": "array",
+                    "description": "List of letters that cannot be in the word.",
+                    "items": {
+                      "type": "string",
+                      "description": "A single alphabetic letter.",
+                      "example": "b"
+                    }
+                  },
+                  "lettersInWrongPosition": {
+                    "type": "array",
+                    "description": "List of letters that are in the word but not in the correct positions.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "letter": {
+                          "type": "string",
+                          "description": "A single alphabetic letter.",
+                          "example": "c"
+                        },
+                        "eliminatedPositions": {
+                          "type": "array",
+                          "description": "Positions where the letter cannot be.",
+                          "items": {
+                            "type": "integer",
+                            "description": "A zero-based position (0-4).",
+                            "example": 1
+                          }
+                        },
+                        "max": {
+                          "type": "integer",
+                          "description": "The maximum number of times the letter can appear in the word.",
+                          "example": 2
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -169,7 +222,9 @@
                   "properties": {
                     "matches": {
                       "type": "array",
-                      "items": { "type": "string" }
+                      "description": "List of matching guesses.",
+                      "items": { "type": "string" },
+                      "example": ["apple", "grape"]
                     }
                   }
                 }
@@ -185,7 +240,8 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "description": "Error message"
+                      "description": "Description of the validation error.",
+                      "example": "limit must be a positive integer"
                     }
                   }
                 }
