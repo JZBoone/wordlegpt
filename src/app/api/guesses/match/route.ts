@@ -23,7 +23,7 @@ type MatchParams = {
    */
   eliminatedLetters?: Letter[];
   /**
-   *
+   * List of letters that are in the word but not in the correct positions
    */
   lettersInWrongPosition?: {
     letter: Letter;
